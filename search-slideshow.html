@@ -1,0 +1,296 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<title>picryl</title>
+	
+    <link rel="stylesheet" href="include/photoswipe.css"> 
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="include/default-skin/default-skin.css"> 
+
+    <script src="include/photoswipe.min.js"></script> 
+
+    <script src="include/photoswipe-ui-default.min.js"></script> 
+    <style>
+      .loading {
+        background-image: url("https://promotions.coca-cola.com/etc/designs/promotions/img/loading.gif") !important;
+        background-repeat: no-repeat !important;
+        background-size: 10% auto !important;
+        background-position: center center !important;	
+        height: 100%;
+        width: 100%;
+      }
+      .pswp__button--autoplay {
+        background: transparent url(./images/play_icon.png) no-repeat scroll 16px 15px !important;
+      }
+      .pswp__button--autoplay.stop {
+        background-image: url(./images/stop_icon.png) !important; margin-top: -2px;
+      }
+    </style>
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+{ (i[r].q=i[r].q||[]).push(arguments)}
+,i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-73235424-1', 'auto');
+ga('send', 'pageview');
+</script>
+  
+  </head>
+
+  <body style="background: #000;" >
+
+    <div class="loading" id="images-loading">
+      <!-- Root element of PhotoSwipe. Must have class pswp. -->
+      <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe. 
+             It's a separate element, as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+          <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+          <div class="pswp__container">
+            <!-- don't modify these 3 pswp__item elements, data is added later on -->
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+          </div>
+
+          <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+          <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+              <!--  Controls are self-explanatory. Order can be changed. -->
+
+              <div class="pswp__counter"></div>
+
+              <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+              <button class="pswp__button pswp__button--share" title="Share"></button>
+
+              <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+              <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+              <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+              <!-- element will get class pswp__preloader--active when preloader is running -->
+              <div class="pswp__preloader">
+                <div class="pswp__preloader__icn">
+                  <div class="pswp__preloader__cut">
+                    <div class="pswp__preloader__donut"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+              <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+              <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- Js -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script>
+      
+      var auto_play_var = getParameterByName('auto_play');
+
+      var defaultRPP = 100; // default Results Per Page value
+      var imagesTotal;
+      var currImageNumber = 0;
+      var imagesStack = [];
+
+      // build items array
+      var items = [];
+
+      // var selectedIds = Cookies.get('selectedIds') || "[]";
+      // selectedIds = JSON.parse(selectedIds);
+      // console.log('selectedIds = ', selectedIds);
+
+      var imagesUrl = getParameterByName('url');
+      var imageID = getParameterByName('image_id');
+      var startSliderIndex = 0;
+      //console.log('url parameter = ', imagesUrl);
+
+      $.ajax({
+        url: imagesUrl,
+        headers: {
+          "x-auth-key": "ladygaga#1"
+        }
+      }).done(function (data) {
+
+        var i = 0;
+
+        imagesTotal = (defaultRPP > data.total_items) ? data.total_items : defaultRPP;
+        console.log('imagesTotal = ', imagesTotal);
+        console.log(data);
+        data.items.forEach(function (item, index) {
+
+          if (imageID == item.id)
+            startSliderIndex = index;
+
+          var imageUrl = item.resources[item.resources.length - 1].url;
+          var mainImageWidth = item.resources[item.resources.length - 1].width;
+          var mainImageHeight = item.resources[item.resources.length - 1].height;
+
+          var imageSource = item.source_name;
+
+          var imageTags = item.tags;
+          imageTags = imageTags.toString();
+          var replacedTags = imageTags.split(',').join(', ');
+          imageUrl = imageUrl;
+          var imageCaption = '<h3>' + item.name + '</h3><p>' + imageSource + '</p>';
+          
+          if (auto_play_var == '1'){
+            imageCaption = '';
+          }
+          
+          items[i] = {
+            src: imageUrl,
+            w: mainImageWidth,
+            h: mainImageHeight,
+            title: imageCaption,
+          };
+          i++;
+        });
+
+
+        openPhotoSwipe(startSliderIndex);
+        $("#images-loading").removeClass('loading');
+      });
+
+
+
+      function getParameterByName(name)
+      {
+        var regexS = "[\\?&]" + name + "=([^&#]*)",
+                regex = new RegExp(regexS),
+                results = regex.exec(window.location.search);
+
+        if (results == null)
+        {
+          return "";
+        }
+        else
+        {
+          return decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+      }
+
+
+
+      /////////////////////////////////////////////////////////////////////////
+
+      var openPhotoSwipe = function (startIndex) {
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+
+        if (startIndex > 0) {
+          startIndex = startIndex;
+        } else {
+          startIndex = 0;
+        }
+
+        // define options (if needed)
+        var options = {
+          // history & focus options are disabled on CodePen        
+          index: startIndex,
+          history: false,
+          focus: false,
+          closeOnScroll: false,
+          timeToIdle: 400,
+          pinchToClose: false,
+          modal: false,
+		  shareEl: false,
+          showAnimationDuration: 0,
+          hideAnimationDuration: 0
+        };
+
+        var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+
+        gallery.listen('close', function () {
+          window.close();
+        });
+
+
+        /************************ [Auto play code start] ****************************/
+        var auto_play_var = getParameterByName('auto_play');
+
+        if ($('.pswp__button--autoplay').length === 0)
+          $('<button class="pswp__button pswp__button--autoplay" title="AutoPlay"></button>').insertAfter('.pswp__button--zoom');
+
+        var _autoplayId = null;
+
+        $('.pswp__button--autoplay').on('click', function (event) {
+
+          event.preventDefault();
+
+          if (_autoplayId) {
+
+            clearInterval(_autoplayId);
+            _autoplayId = null;
+            $('.pswp__button--autoplay').removeClass('stop');
+
+          } else {
+            _autoplayId = setInterval(function () {
+              gallery.next();
+            }, 7000);
+            $('.pswp__button--autoplay').addClass('stop');
+
+
+          }
+        });
+
+
+        if (auto_play_var == 1) {
+          $('.pswp__button--autoplay').trigger('click');
+        }
+        /************************ [Auto play code end] ****************************/
+
+      };
+
+    </script>
+
+  </body>
+</html>

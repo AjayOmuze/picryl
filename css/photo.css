@@ -1,0 +1,529 @@
+/**
+ *
+ * Used to generate responsive styles according to the breakpoint we set into the variables file
+ *
+ */
+/**
+ *
+ * Simpler shortcut to create easily break points
+ *
+ */
+/**
+ * Easy functions to create easily pure css arrows anywhere
+ */
+
+.demo {
+  position: relative;
+  margin-bottom: 50px;
+  *zoom: 1;
+}
+.demo:before, .demo:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.demo:after {
+  clear: both;
+}
+.demo .GITheWall {
+  float: left;
+}
+.demo .ajax {
+  color: #000;
+  background-color:#F4F6F5
+}
+.demo .ajax .txt {
+  font-size: 0.8em;
+  float: left;
+  padding: 0 5% 0 0;
+  width:100%;
+}
+.demo .ajax .img {
+  position: relative;
+  width: 50%;
+  height: 550px;
+  float: left;
+  background-size: cover;
+  background-position: center;
+}
+.demo ul {
+}
+.demo ul li {
+  cursor: pointer;
+  color: white;
+  background: #444;
+  float: left;
+  display: inline-block;
+  width: 161px;
+  height: 161px;
+}
+.demo ul li img {
+  width: 161px;
+  height: 161px;
+}
+
+.GI_TW_expander {
+  color: white;
+}
+
+/**
+ *
+ * The wall could be used to show an image gallery or any other content in a "google images" user interaction way
+ * Here there is all the html needed
+ *
+ *
+ *  <div class="GITheWall">
+ *    <ul>
+ *      <li data-contenttype="image" data-href="path/to/the/image">
+ *        <img src="small/thumb" />
+ *      <li>
+ *      <li data-contenttype="ajax" data-href="path/to/the/html/to/load">
+ *        <img src="small/thumb" />
+ *      <li>
+ *    </ul>
+ *  </div>
+ *
+ */
+.GITheWall ul {
+  list-style: none;  
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.GITheWall ul li {
+  display: inline-block;
+  vertical-align: top;
+  width: 161px;
+  margin:3px 3px;
+  float:none;
+  /* margin-left:1px;
+   margin-bottom:1px; */
+}
+.GITheWall ul li.GI_TW_Selected_Row {
+  -webkit-transition: margin-bottom 0.3s ease-in;
+  -moz-transition: margin-bottom 0.3s ease-in;
+  -o-transition: margin-bottom 0.3s ease-in;
+  transition: margin-bottom 0.3s ease-in;
+}
+
+.GI_TW_expander {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background:#fff;
+  left: 0;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-in;
+  -moz-transition: height 0.3s ease-in;
+  -o-transition: height 0.3s ease-in;
+  transition: height 0.3s ease-in;
+  width:100%;
+   margin:0 auto; 
+}
+.GI_TW_expander.animating {
+  overflow: hidden !important;
+}
+.GI_TW_expander.opened {
+  overflow: visible;
+}
+.GI_TW_expander .GI_TW_pointer {
+  position: absolute;
+  margin-left: -20px;
+  margin-top: -20px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #f0f0f0;
+  -webkit-transition: left 0.3s ease-in;
+  -moz-transition: left 0.3s ease-in;
+  -o-transition: left 0.3s ease-in;
+  transition: left 0.3s ease-in;
+  display:none;
+}
+.GI_TW_expander .GI_TW_expander-inner {
+  width: 100%;
+  height: 560px;
+  padding:6px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.GI_TW_expander .GI_TW_expander-inner .GI_TW_fullimg {
+  width: 100%;
+  height: 580px;
+  margin: 10px 0 0;
+  text-align: center;
+  overflow: hidden;
+}
+.GI_TW_expander .GI_TW_expander-inner .GI_TW_fullimg img {
+  position: relative;
+}
+.GI_TW_expander .GI_TW_Controls {
+  z-index: 1;
+}
+.GI_TW_expander .GI_TW_close {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  color:#0288d1;
+  top: 24px;
+  right: 20px;
+  cursor: pointer;
+    background:url(../images/close_icon.png) center no-repeat;
+	font-size:0px;
+}
+.GI_TW_expander .GI_TW_arrow {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_hidden {
+  display: none;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_next {
+  right: 0px;
+    color:#fff;
+  font-size:25px;
+  width:26px;
+  height:26px;
+  text-align:center;
+  background-color:#2dc0f2;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_prev {
+  left: 0px;
+  color:#fff;
+  font-size:25px;
+  width:26px;
+  height:26px;
+  text-align:center;
+  background-color:#2dc0f2;
+}
+.GI_TW_expander .GI_TW_loading {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ddd;
+  box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #cccccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0;
+  -webkit-animation: loader 0.5s infinite ease-in-out both;
+  -moz-animation: loader 0.5s infinite ease-in-out both;
+  -ms-animation: loader 0.5s infinite ease-in-out both;
+  -o-animation: loader 0.5s infinite ease-in-out both;
+  animation: loader 0.5s infinite ease-in-out both;
+}
+
+@-moz-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@-webkit-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@-o-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@-ms-keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+@keyframes loader {
+  0% {
+    background: #ddd;
+  }
+
+  33% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #cccccc, -15px 30px 1px #dddddd;
+  }
+
+  66% {
+    background: #ccc;
+    box-shadow: 0 0 1px #cccccc, 15px 30px 1px #dddddd, -15px 30px 1px #cccccc;
+  }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Image replacement
+ */
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.clear-left {
+  clear: left;
+}
+
+.clear-right {
+  clear: right;
+}
+
+@media (max-width: 767px) {
+.GI_TW_expander {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background:#fff;
+  left: 0;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-in;
+  -moz-transition: height 0.3s ease-in;
+  -o-transition: height 0.3s ease-in;
+  transition: height 0.3s ease-in;
+  width:100%;
+
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_next {
+  right: 0px;
+    color:#fff;
+  font-size:25px;
+  width:26px;
+  height:26px;
+  text-align:center;
+  background-color:#2dc0f2;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_prev {
+  color:#fff;
+  left:0px;
+  font-size:25px;
+  width:26px;
+  height:26px;
+  text-align:center;
+  background-color:#2dc0f2;
+}
+
+}
+
+@media (max-width: 320px) {
+.GI_TW_expander {width:100%; margin:3px; margin-left:28px !important}
+.GITheWall ul li {
+  width: 145px;
+  margin-left:1px;
+  margin-bottom:1px;
+}
+.demo ul li {
+  cursor: pointer;
+  color: white;
+  background: #444;
+  float: left;
+  display: inline-block;
+  width: 145px;
+  height: 145px;
+}
+.demo ul li img {
+  width: 145px;
+  height: 145px;
+}
+
+}
+
+@media (max-width: 360px) {
+.GI_TW_expander {width:100%;margin:0 auto; margin-left:0px !important}
+}
+
+
+@media (max-width: 900px) {
+.GI_TW_expander {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background:#fff;
+  left: 0;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: height 0.3s ease-in;
+  -moz-transition: height 0.3s ease-in;
+  -o-transition: height 0.3s ease-in;
+  transition: height 0.3s ease-in;
+  width:100%;
+   
+     
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_next {
+  right: 0px;
+      color:#fff;
+  font-size:25px;
+  width:26px;
+  height:26px;
+  text-align:center;
+  background-color:#2dc0f2;
+}
+.GI_TW_expander .GI_TW_arrow.GI_TW_prev {
+  left: 0px;
+    color:#fff;
+  font-size:25px;
+  width:26px;
+  height:26px;
+  text-align:center;
+  background-color:#2dc0f2;
+}
+}
+
+.GI_TW_expander-inner{ height:auto !important;}
+.GI_TW_expander.opened {height: auto !important;}

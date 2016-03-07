@@ -1,0 +1,586 @@
+/* Components */
+.actions > div {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2em; }
+
+.actions span {
+  vertical-align: middle;
+  margin-left: 0.5em; }
+
+.action-button {
+  font-size: 2em;
+  cursor: pointer; }
+
+.action-add {
+  color: #337ab7; }
+
+.action-add:hover {
+  color: #23527c; }
+
+.action-play {
+  color: #337ab7; }
+
+.action-play:hover {
+  color: #23527c; }
+
+.loading-indicator {
+  display: block;
+  text-align: center;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite; }
+
+.loading-indicator-main {
+  display: block;
+  text-align: center;
+  -webkit-animation: spin 1s linear infinite;
+  -moz-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite; }
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg); } }
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.photo-list-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap; }
+
+ul.photo-list {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%; }
+
+.photo-list-container ul.photo-list {
+  text-align: left; }
+
+ul.photo-list li {
+  display: inline-block;
+  position: relative;
+  width: 138px;
+  height: 138px;
+  margin: 1px;
+  background-image: url(http://www.canadacontestsonline.com/wp-content/themes/Wordie/images/no_image.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+ul.photo-list li.selectable {
+  cursor: pointer; }
+
+ul.photo-list li span {
+  position: absolute;
+  top: 0.3em;
+  left: 0.5em;
+  font-size: 2em;
+  color: white;
+  opacity: 0.5; }
+
+ul.photo-list li .chosen {
+  opacity: 1;
+  color: #aaf; }
+
+ul.photo-list li .not-chosen:before {
+  position: relative;
+  font-family: FontAwesome;
+  content: "\f10c"; }
+
+ul.photo-list li .chosen:before {
+  position: relative;
+  font-family: FontAwesome;
+  content: "\f058"; }
+
+.input-search {
+  position: relative;
+  width: 100%;
+  min-width: 200px;
+  padding: 1.4em; }
+
+.input-search.inline {
+  padding: 0;
+  height: 1.7em;
+  width: 130px;
+  margin: 13px; }
+
+/* .input-search:before {
+    position: absolute;
+    font-family: FontAwesome;
+    content: "A";
+    color: black;
+    top: 0;
+    left: -5px;
+} */
+.input-search::-webkit-input-placeholder {
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #777;
+  padding-top: 1px; }
+
+.input-search:-moz-placeholder {
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #777;
+  padding-top: 1px; }
+
+.input-search::-moz-placeholder {
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #777;
+  padding-top: 1px; }
+
+.input-search:-ms-input-placeholder {
+  text-align: left;
+  font-size: 0.8em;
+  font-weight: bold;
+  color: #777;
+  padding-top: 1px; }
+
+.left-navigation {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: rgba(51, 122, 183, 0.5);
+  width: 50px;
+  opacity: 0.2;
+  cursor: pointer; }
+
+.left-navigation:hover {
+  opacity: 1.0; }
+
+.left-navigation span {
+  position: absolute;
+  color: #337ab7;
+  left: 50%;
+  top: 50%;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 2em; }
+
+.right-navigation {
+  right: 0;
+  top: 0;
+  position: absolute;
+  height: 100%;
+  background-color: rgba(51, 122, 183, 0.5);
+  width: 50px;
+  opacity: 0.2;
+  cursor: pointer; }
+
+.right-navigation:hover {
+  opacity: 1.0; }
+
+.right-navigation span {
+  position: absolute;
+  color: #337ab7;
+  left: 50%;
+  top: 50%;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 2em; }
+
+div.related-tags {
+  width: 100%;
+  overflow-x: auto; }
+
+ul.tags, ul.related-tags {
+  margin: 0;
+  padding: 0; }
+
+ul.related-tags {
+  white-space: nowrap; }
+
+ul.tags li, ul.related-tags li {
+  cursor: pointer;
+  display: inline-block;
+  margin: 2px;
+  background-color: white;
+  
+  border-radius: 3px;
+
+-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.29) !important;
+-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.29) !important;
+box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.29)!important;
+
+  padding: .3em .9em .4em; }
+
+ul.editable-tags {
+  margin: 0;
+  padding: 0; }
+
+ul.editable-tags li {
+  display: inline-block;
+  margin: 2px 0 2px;
+  background-color: white;
+  border: #bbb solid 1px;
+  border-radius: 3px;
+  padding: .3em .9em .4em;
+  background-color: #555;
+  color: white;
+-webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.29);
+-moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.29);
+box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.29);
+  }
+
+ul.editable-tags li * {
+  vertical-align: top; }
+
+ul.editable-tags .tag-icon {
+  cursor: pointer;
+  margin: 0 0 0 0.5em;
+ }
+
+ul.editable-tags .tag-icon:hover {
+  opacity: 1.0; }
+
+.tag-suggestions {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 3em;
+  z-index: 2; }
+
+.tag-suggestions.inline {
+  left: 13px; }
+
+.tag-suggestions ul {
+  padding: 2px;
+  margin-top: 1px;
+  list-style-type: none;
+  box-shadow: .05em .01em .5em rgba(0, 0, 0, 0.2);
+  background: white;
+  width: 200px; }
+
+.short .tag-suggestions ul {
+  height: 150px;
+  width: 250px;
+  overflow-y: auto; }
+
+.tag-suggestions li {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px;
+  margin: 0; }
+
+.tag-suggestions li:hover {
+  background-color: #b7cfe0;
+  cursor: pointer; }
+
+.photo-details {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1; }
+
+.photo-details .arrow-box {
+  position: relative;
+  background: white;
+  border: 2px solid #ddd; }
+
+.photo-details .arrow-box:after, .photo-details .arrow-box:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none; }
+
+.photo-details .arrow-box:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: white;
+  border-width: 3px;
+  margin-left: -3px; }
+
+.photo-details .arrow-box:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #ddd;
+  border-width: 6px;
+  margin-left: -6px; }
+
+.photo-details .image {
+  display: inline-block;
+  width: 400px;
+  height: 300px;
+  background-image: url(http://d1qb4gn8ltk7f1.cloudfront.net/100/2006686833.jpg);
+  background-position: center;
+  background-size: cover;
+  border-right: 2px solid #ddd; }
+
+.photo-details .description {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1em;
+  width: 300px;
+  height: 300px;
+  overflow: auto; }
+
+.photo-details .loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white; }
+
+.photo-details .loading-indicator {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%; }
+
+.photo-details .image-name {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #337AD1;
+  padding: 0.5em; }
+
+.photo-details .view-image {
+  background-color: #337ab7;
+  padding: .3em .9em .4em;
+  border-radius: 5px; }
+
+.photo-details .view-image a {
+  color: white; }
+
+.photo-details .image-location {
+  padding: 0.5em; }
+
+.photo-details .image-date {
+  padding: 0.5em 0.5em 1em; }
+
+.photo-details .image-source {
+  background-color: #337ab7;
+  padding: .3em .9em .4em;
+  margin-bottom: 1em;
+  border-radius: 5px; }
+
+.photo-details .image-source a {
+  color: white; }
+
+.photo-details .image-tags {
+  padding: 1em 0.5em 1em;
+  border-top: 2px solid #ddd; }
+
+.search-filter-button {
+  cursor: pointer;
+  background-color: #337ab7;
+  padding: .4em .7em .3em;
+  border-radius: 0.4em;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  color: white; }
+
+.search-filter-button:hover {
+  background-color: #23527c; }
+
+/* Sections */
+.collection {
+  margin-top: 2em;
+  font-size: 0.9em; }
+
+.collection-metadata {
+  overflow: auto;
+  color: #777;
+  margin: 1em 0 1em; }
+
+.collection-photos-number-label {
+  float: right; }
+
+.collection .photo-list li {
+  cursor: pointer; }
+
+.copyright {
+  text-align: center;
+  margin: 20px 0 20px 0;
+  color: #ccc; }
+
+.cover-image {
+  position: relative;
+  margin-top: -20px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  background-image: url(https://oldmachinepress.files.wordpress.com/2013/11/beardmore-tornado-powered-r101.jpg);
+  background-size: cover;
+  background-position: center; }
+
+.cover-image .input-group-search {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 30%; }
+
+.search-section {
+  position: relative;
+  margin-top: -20px;
+  min-height: 5em;
+  padding: 1em 0;
+  background-color: #eee;
+  font-size: 0.9em; }
+
+.search-section > .container {
+  position: relative; }
+
+.search-section > .container > div {
+  display: inline-block;
+  vertical-align: middle; }
+
+.search-section .input-group {
+  margin-right: 1.5em; }
+
+.search-section .actions {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%); }
+
+.result-section {
+  margin: 1em 0 1em;
+  font-size: 0.9em; }
+
+.result-metadata {
+  overflow: auto;
+  margin: 0em 0 0.8em; }
+
+.result-metadata > div {
+  display: inline-block;
+  vertical-align: middle; }
+
+.result-metadata .actions {
+  float: right; }
+
+.result-section .container {
+  position: relative; }
+
+.result-section .photo-list li {
+  cursor: pointer; }
+
+.navbar-default .navbar-nav > li > a {
+  color: #888; }
+
+.android-app-label {
+  background-color: green;
+  font-size: 0.9em;
+  padding: .3em .9em .4em; }
+
+.ios-app-label {
+  background-color: #bbb;
+  font-size: 0.9em;
+  padding: .3em .9em .4em; }
+
+.navbar-brand img {
+  height: 100%; }
+
+.trending {
+  padding-top: 1em;
+  padding-bottom: 3em;
+  background-color: #ddd;
+  text-align: center; }
+
+.trending .caption {
+  display: block;
+  font-size: 1em;
+  color: #77f;
+  margin: 1em 0 1em; }
+
+.trending ul#tags {
+  text-align: center; }
+
+.submenu-section {
+  position: relative;
+  margin-top: -20px;
+  min-height: 5em;
+  padding: 1em 0;
+  background-color: #eee;
+  font-size: 0.9em; }
+
+.submenu-cover {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  background-color: black;
+  margin-top: -20px; }
+
+.submenu-cover .cover-image {
+  height: 100%;
+  width: 100%;
+  margin-top: 20px;
+  opacity: 0.3;
+  background-image: url(http://petersburgcity.com/download/wallpapers/scr_saver3_1152x864.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.submenu-cover span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: white;
+  opacity: 1.0; }
+
+/* Pages */
+.about-section {
+  margin-top: 20px; }
+
+ul.benefits {
+  padding-left: 20px;
+  font-weight: bold;
+  margin-bottom: 20px; }
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  background-color: black; }
+
+.slideshow-no-photos {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-image: url(http://previews.123rf.com/images/bbbar/bbbar1201/bbbar120100205/11939329-No-image-available-written-in-chalk-on-a-blackboard-Stock-Photo.jpg);
+  background-size: cover;
+  background-position: center; }
+
+.slideshow-image {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat; }
+
+.slideshow-image.loading {
+  background-image: url(https://promotions.coca-cola.com/etc/designs/promotions/img/loading.gif);
+  background-size: 10%;
+  background-repeat: no-repeat; }
+
+.collections-section .container {
+  position: relative; }
+
+/* Page settings */
+html, body {
+  width: 100%;
+  height: 100%; }
+
+/* Common */
+h3 {
+  margin-top: 10px; }

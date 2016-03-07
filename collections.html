@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Collections | Picryl</title>
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- CSS bundle -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/custom.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+{ (i[r].q=i[r].q||[]).push(arguments)}
+,i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-73235424-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+
+  <body>
+    <header>
+
+    </header>
+    <!-----------------inner_Photo-------------------------->
+    <section>
+      <div class="inner_photo about_photo" style="background: url('images/headers/collections.jpg')">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3"><h1>COLLECTIONS</h1></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-----------------title---------------->
+    <section>
+      <div class="container">
+        <div class="title">
+          <div class="clearfix">&nbsp;</div>
+        </div>
+      </div>
+    </section>
+
+	<div class="box_collection_two">
+	<div class="container">
+			
+		<div id="collections" class="row"></div>
+
+		<div class="loading text-center">
+		  <span class="loading-indicator fa fa-spinner"></span>
+		</div>
+		
+	</div>
+	</div>
+	
+	<div class="clearfix">&nbsp;</div>
+
+
+    <!-----------------footer------------------->
+    <footer>
+
+    </footer>
+
+
+    <!-- Js -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Cookie framework -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.3/js.cookie.js"></script>    
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <script>
+
+      
+      $(document).ready(function () {
+
+
+        /* includeing header footer */
+        $("header").load("header.html", function () {
+          $('#myNavbar').find('li').removeClass('active');
+          $('#myNavbar').find('li.collections_page').addClass('active');
+        });
+        $("footer").load("footer.html");
+
+
+        $(".btn-pref .btn").click(function () {
+          $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
+          // $(".tab").addClass("active"); // instead of this do the below 
+          $(this).removeClass("btn-default").addClass("btn-primary");
+        });
+      });</script>
+
+    <!-- My JS -->
+    <script>
+	
+      $(document).ready(function () {
+
+		var pageNumber = 1;
+        var maxPageNumber = 1;
+
+		loadRemoteCollections(pageNumber);
+		
+		/* Load remote collections */
+		function loadRemoteCollections(pageNumber){
+			
+			$('.loading-indicator').show();
+			
+			$.ajax({
+			  url: "https://api.getarchive.net/v3/collections?rpp=9&page="+pageNumber,
+			  headers: {
+				"x-auth-key": "ladygaga#1"
+			  }
+			}).done(function (data) {
+
+				data.items.forEach(function (collection, index) {
+				  
+				  var  html = "";
+				  
+				  maxPageNumber = data.total_pages;
+				  
+				  var collectionId = collection.id;
+				  
+				  var collectionName = collection.name;
+				  
+				  var collectionTotalPhotos = collection.total_media;
+				  
+				  var collectionMainImage = collection.cover.resources[collection.cover.resources.length - 1].url;
+				  
+				  // call function to display collection html
+				  html = displayCollection(collectionId, collectionName, collectionTotalPhotos, collectionMainImage);
+				  
+				  $('#collections').append(html);
+				  
+				  $('.loading-indicator').hide();
+				  
+				});
+			
+			});
+		
+		}
+		
+        function displayCollection(collectionId, collectionName, collectionTotalPhotos, collectionMainImage) {
+
+			var collection_html = "";
+			
+			var dots = '';
+			var collectionShortName = collectionName.substring(0,25);
+			if(collectionName.length > 25){
+				dots = '...';
+			}
+			
+			collection_html += '<div class="col-md-4 col-sm-6 col-xs-12">';
+				collection_html += '<h3 class="box_link" data-id="'+collectionId+'"><a data-toggle="tooltip" title="'+collectionName+'" href="collection.html?collectionId='+collectionId+'">'+collectionShortName + dots + ' <span class="pull-right">('+collectionTotalPhotos+' Items)</span></a></h3>';
+				
+				collection_html += '<a href="collection.html?collectionId='+collectionId+'">';
+				
+					collection_html += '<div class="collection_box" style="background: rgba(0, 0, 0, 0) url(' + collectionMainImage + ') no-repeat scroll center center / cover;">&nbsp;</div>';
+				
+				collection_html += '</a>';
+			
+			collection_html += '<div class="clearfix">&nbsp;</div></div>';
+			
+			return collection_html;
+		}
+
+		
+		$(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 100)
+            {
+              if (pageNumber < maxPageNumber) {                
+				
+				$('.loading-indicator').show();
+				
+				loadRemoteCollections(++pageNumber);
+				
+              }
+            }
+          });		
+		
+		$("body").tooltip({ selector: '[data-toggle=tooltip]' });
+		
+      });
+          
+	</script>
+
+  </body>
+</html>

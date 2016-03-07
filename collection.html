@@ -1,0 +1,920 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Collections | Picryl</title>
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="manifest" href="manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- CSS bundle -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/custom.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/io-range-slider/ion.rangeSlider.css" rel="stylesheet" type="text/css" />
+    <link href="css/io-range-slider/ion.rangeSlider.skinModern.css" rel="stylesheet" type="text/css" />
+    <link href="css/io-range-slider/normalize.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/photo.css" />
+
+	<link rel="stylesheet" href="include/photoswipe.css"> 
+
+    <link rel="stylesheet" href="include/default-skin/default-skin.css"> 
+
+    <script src="include/photoswipe.min.js"></script> 
+
+    <script src="include/photoswipe-ui-default.min.js"></script>
+
+    <style>
+      .loading-slider {
+        background-image: url("https://promotions.coca-cola.com/etc/designs/promotions/img/loading.gif") !important;
+        background-repeat: no-repeat !important;
+        background-size: 10% auto !important;
+        background-position: center center !important;	
+        height: 100%;
+        width: 100%;
+      }
+      .pswp__button--autoplay {
+        background: transparent url(./images/play_icon.png) no-repeat scroll 16px 15px !important;
+      }
+      .pswp__button--autoplay.stop {
+        background-image: url(./images/stop_icon.png) !important; margin-top: -2px;
+      }
+    </style>
+
+	
+    <!-------------------carousel---------------->
+    <link href="css/owl.carousel.css" rel="stylesheet" />
+    <link href="css/owl.theme.css" rel="stylesheet" />
+    <!-------------------carousel---------------->
+    <style>
+      section .inner_photo{background-image:none; background-color:#ececec ;}
+      .photo-list li{background-color: #444;}
+	  .pswp--open{ position:fixed !important;}
+    </style>
+	
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function()
+{ (i[r].q=i[r].q||[]).push(arguments)}
+,i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-73235424-1', 'auto');
+ga('send', 'pageview');
+</script>
+	
+  </head>
+
+  <body>
+    <header>
+
+    </header>
+    <!-----------------inner_Photo-------------------------->
+    <section>
+      <div class="inner_photo">
+        <div class="container">
+          <div class="blue_bg small-fonts"><h1><span id="collection-name"></span></h1></div>
+        </div>
+      </div>
+    </section>
+
+
+    <div id="images-loading">
+      <!-- Root element of PhotoSwipe. Must have class pswp. -->
+      <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe. 
+             It's a separate element, as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+          <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+          <div class="pswp__container">
+            <!-- don't modify these 3 pswp__item elements, data is added later on -->
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+          </div>
+
+          <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+          <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+              <!--  Controls are self-explanatory. Order can be changed. -->
+
+              <div class="pswp__counter"></div>
+
+              <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+              <button class="pswp__button pswp__button--share" title="Share"></button>
+
+              <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+              <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+              <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+              <!-- element will get class pswp__preloader--active when preloader is running -->
+              <div class="pswp__preloader">
+                <div class="pswp__preloader__icn">
+                  <div class="pswp__preloader__cut">
+                    <div class="pswp__preloader__donut"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+              <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+              <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <section>
+
+      <div class="container">
+
+        <div id="search-result" class="result-section search_page search-result-collection-ul">
+          <div class="collection_page">
+
+            <div class="row">
+              
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="title collection-title-width">					
+                  <input type="text" id="date_range_picker" name="date_range_picker" value="" />                  
+                </div>
+              </div>
+
+            </div>
+           
+            <div class="row slideshow_md">
+              <div class="col-md-6 col-xs-12 col-sm-6">                                
+                <h4 class="search-total-counter">Items: <span class="result-number">0</span>
+                </h4>
+              </div> 
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <a href="javascript:void(0);" class="btn btn-primary pull-right blue-bg blue_btn" id="play-button">
+                  Play Slideshow
+                </a>
+              </div>			  
+			  
+            </div>
+			
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-sm-12">
+                <p id="collection_description"></p>
+              </div>                           
+            </div>			
+            <hr/>
+
+            <!-- Photo Details Popup -->
+            <div id="photo-details" class="photo-details">
+              <div class="arrow-box">
+                <div class="left-navigation"><span class="fa fa-arrow-left"></span></div>
+                <div class="right-navigation"><span class="fa fa-arrow-right"></span></div>
+                <div class="loading">
+                  <span class="loading-indicator fa fa-spinner"></span>
+                </div>
+                <div class="image"></div>
+                <div class="description">
+                  <div class="image-name"></div>
+                  <div class="view-image"><a href="#" target="_blank"><i class="fa fa-link"></i> <span class="caption">View Image</span></a></div>
+                  <div class="image-location"><a href="#"><i class="fa fa-map-marker"></i> <span class="caption"></span></a></div>
+                  <div class="image-date"><a href="#"><i class="fa fa-calendar"></i> <span class="caption"></span></a></div>
+                  <div class="image-source">
+                    <a href="#" target="_blank">
+                      <i class="fa fa-link"></i> 
+                      <span class="caption"></span>
+                    </a>
+                  </div>
+                  <div class="image-tags"><i class="fa fa-tags"></i> <span class="caption">Tags, Tags, Tags</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="demo">
+              <div class="GITheWall">
+                <ul class="sample"></ul>
+                <ul class="photo-list"></ul>
+              </div>
+            </div>
+
+            <div class="clearfix">&nbsp;</div>
+            <center><div class="loading-indicator fa fa-spinner" style="display:none;"></div></center>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section>
+      <div class="collections">
+        <div class="container">
+
+        </div>
+      </div>
+    </section>
+
+    <div class="clearfix"></div>
+
+    <!-----------------footer------------------->
+    <footer>
+
+    </footer>
+
+    <!-- Js -->
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/ion.rangeSlider.js"></script>
+
+    <script src="js/jQuery.GI.TheWall.js"></script>
+
+
+    <script>
+      var wall = $('.GITheWall').GITheWall({
+        nextButtonClass: 'fa fa-angle-right',
+        prevButtonClass: 'fa fa-angle-left',
+        closeButtonClass: 'fa fa-times'
+      });
+      $('.add-item').on('click', function () {
+        $('.GITheWall ul').append('<li data-contenttype="image" data-href="http://lorempixel.com/570/570?18"><img src="http://lorempixel.com/570/570?' + Math.random() + '" /></li>');
+        wall.refresh();
+      });
+      $('.remove-item').on('click', function () {
+        $('.GITheWall ul li:last').remove();
+        wall.refresh();
+      });
+      // hljs.initHighlightingOnLoad();
+    </script>
+
+    <div class="image_details_container"></div>
+
+
+    <!-- Cookie framework -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.0.3/js.cookie.js"></script>
+    <!-- Tag search module -->
+    <script src="js/tag-search.static.js"></script>
+    <!-- Photo selection module -->
+    <script src="js/photo-select.static.js"></script>
+    <!-- Photo details module -->
+    <script src="js/photo-details.static.js"></script>
+    <!-- JS bundle -->
+    <script src="js/collection.js"></script>
+
+
+
+    <!-- My JS -->
+    <script>
+	
+	  var g_range_from = 0;
+	  var g_range_to = 0;
+	  var startSliderIndex = 0;
+	  
+	  var imageID = "";
+      var pageID = "";
+		  
+      var created_date_range_from = '';
+      var created_date_range_to = '';
+      var imagePageNumber = '';
+      var headerBannerImageUrl = '';
+	  var null_media_counter = 0;
+      var searchFrom = '';
+      var searchTo = '';
+
+	  var call_ajax_url = true;
+	  
+      var periodFilter = '';
+
+      $(document).ready(function () {
+
+
+        /* includeing header footer */
+        $("header").load("header.html", function () {
+          $('#myNavbar').find('li').removeClass('active');
+          $('#myNavbar').find('li.collections_page').addClass('active');
+        });
+        $("footer").load("footer.html");
+
+
+        var imagesUrl = ''; // URL that is used to retrieve messages
+        var firstImageUrlCounter = 0;
+
+        /* Photo selection logic */
+        var photoClickHandler = function (itemId) {
+          console.log('photoClickHandler itemId = ', itemId);
+          PhotoDetails.showPhotoDetails(this, itemId);
+        };
+        PhotoSelect.setParameters('.photo-list li', $("#add-button"), photoClickHandler);
+        var refreshSelection = PhotoSelect.refreshSelection;
+		
+        /* Tag search logic */
+        // convertToTagSearch($("#search-input"), tagSelectHandler);
+        // function tagSelectHandler (tag) {
+        //     window.location.href = "search.html?search=" + tag;
+        // };
+
+        /* Check for url parameters */
+        var collectionId = getUrlParameter('collectionId');
+        if (collectionId === undefined || collectionId === '') {
+          window.location.href = 'collections.html';
+        }
+
+        var resultElement = $("#search-result .photo-list");
+
+        var pageNumber = 1; // For infinite scroll
+        var maxPageNumber = 1;
+        loadPhotos(pageNumber);
+
+        function loadPhotos(pageNumber) {
+          if (collectionId.substring(0, 5) === 'local') {
+            loadLocalPhotos(pageNumber);
+          } else {
+            loadRemotePhotos(pageNumber);
+          }
+        }
+
+        function loadLocalPhotos() { // Page number is irrelevant for local collections cause they are loaded fully
+          var localCollections = Cookies.get('localCollections') || '[]';
+          localCollections = JSON.parse(localCollections);
+          /* Find and load local collection */
+          localCollections.forEach(function (collection) {
+            if (collection.id === collectionId) {
+              displayMetadata(collection.name, collection.photos.length);
+              collection.photos.forEach(function (photoId) {
+                $.ajax({
+                  url: "https://api.getarchive.net/v3/media/" + photoId,
+                  headers: {
+                    "x-auth-key": "ladygaga#1"
+                  }
+                }).done(function (data) {
+
+                  var photoUrl = data.images[0].url;
+                  var headerImageUrl = data.images[0].url;
+
+                  if (data.images[1] && data.images[1].url) {
+                    photoUrl = data.images[1].url;
+                  }
+
+                  if (data.images[data.images.length - 1] && data.images[data.images.length - 1].url) {
+                    headerImageUrl = data.images[data.images.length - 1].url;
+                  }
+
+                  displayPhoto(photoId, photoUrl, headerImageUrl);
+
+                });
+              });
+              refreshSelection();
+            }
+          });
+        }
+
+        function loadRemotePhotos(pageNumber) {
+
+          $(".loading-indicator").show();
+
+          if (pageNumber == 1)
+          {
+            $(".photo-list").html('');
+
+            // Load collection name and amount of photos
+            $.ajax({
+              url: "https://api.getarchive.net/v3/collections/" + collectionId,
+              headers: {
+                "x-auth-key": "ladygaga#1"
+              }
+            }).done(function (data) {
+
+              headerBannerImageUrl = data.cover.resources[data.cover.resources.length - 1].url;
+
+              displayMetadata(data.name, data.total_photos, headerBannerImageUrl, data.desc);
+
+            });
+          }
+
+          if (searchFrom != "" && searchTo == "") {
+            periodFilter = "&created_date_from=" + searchFrom;
+          } else if (searchFrom == "" && searchTo != "") {
+            periodFilter += "&created_date_to=" + searchTo;
+          } else if (searchFrom != "" && searchTo != "") {
+            periodFilter = "&created_date_from=" + searchFrom
+                    + "&created_date_to=" + searchTo;
+          }
+		
+		  // for getting null date images
+		  var created_date_null = '';
+		  
+		  if(null_media_counter == 0){
+			created_date_null = '&created_date_null=1';			
+		  }else{
+			created_date_null = '';
+			null_media_counter = 0;
+		  }
+		  
+		
+          // Prepare url to retrieve photos
+          imagesUrl = "https://api.getarchive.net/v3/collections/" + collectionId + "/media";
+
+		  imagesUrl += "?rpp=40"+created_date_null+"&created_date_range=1" + periodFilter + "&page=" + pageNumber;
+		  
+          $('.result-number').text('');
+          // Load photos
+          $.ajax({
+            url: imagesUrl,
+            headers: {
+              "x-auth-key": "ladygaga#1"
+            }
+          }).done(function (data) {
+		  
+            imagePageNumber = pageNumber;
+            $(".loading-indicator").hide();
+
+            //console.log("Total: " + data.total_items);
+            $('.result-number').text(data.total_items);
+
+            //console.log(imagesUrl + "?created_date_range=1" + periodFilter + "&page=" + pageNumber);
+
+            created_date_range_from = new Date(data.created_date_range[0]);
+            created_date_range_from = created_date_range_from.getFullYear();
+
+            created_date_range_to = new Date(data.created_date_range[1]);
+            created_date_range_to = created_date_range_to.getFullYear();
+			
+            g_range_from = created_date_range_from;
+            g_range_to = created_date_range_to;
+
+            initialize_date_range_slider(created_date_range_from, created_date_range_to);
+
+            /* Metadata */
+            maxPageNumber = data.total_pages;
+
+            data.items.forEach(function (photo) {
+              //console.log(photo);
+              var photoUrl = photo.resources[0].url;
+              var headerImageUrl = photo.resources[0].url;
+              var photoname = photo.name;
+              var photolocation = photo.location;
+              var photodescription = photo.description;
+              var photosource = photo.source_name;
+              var photolink = photo.source_url;
+              var photosummary = photo.summary;
+              var photorights = photo.rights;
+              var photolatitude = photo.latitude;
+              var photolongitude = photo.longitude;
+              var photomincreateddate = photo.min_created_date;
+              var photomaxcreateddate = photo.max_created_date;
+
+              //console.log(photo.latitude);
+              var phototags = '';
+              if (photo.tags.length > 0) {
+                phototags = photo.tags.join(', ');
+              }
+
+              if (photo.resources[1] && photo.resources[1].url) {
+                photoUrl = photo.resources[1].url;
+              }
+
+              if (photo.resources[photo.resources.length - 1] && photo.resources[photo.resources.length - 1].url) {
+                headerImageUrl = photo.resources[photo.resources.length - 1].url;
+              }
+
+              if (photo.resources[photo.resources.length - 1] && photo.resources[photo.resources.length - 1].url) {
+                headerImageUrl = photo.resources[photo.resources.length - 1].url;
+              }
+
+              displayPhoto(photo.id, photoUrl, headerImageUrl, photoname, photolocation, photodescription, photosource, photolink, phototags, photosummary, photorights, photolatitude, photolongitude, photomincreateddate, photomaxcreateddate, imagePageNumber);
+			  
+            });
+
+            refreshSelection();
+			call_ajax_url = true;
+          });
+        }
+
+		
+        /* Infinite scroll */
+        $(window).scroll(function () {
+		
+          if ($(window).scrollTop() + $(window).height() > $(document).height() - 100)
+          {
+		  
+            if (pageNumber < maxPageNumber) {
+				
+				if(call_ajax_url == true){
+					call_ajax_url = false;
+					loadPhotos(++pageNumber);
+					
+				}
+					
+            }
+          }
+		  
+        });
+
+        function displayMetadata(collectionName, collectionTotalPhotos, headerBannerImageUrl, collection_description)
+        {
+          // $("#search-result .result-number").html(collectionTotalPhotos);
+          $("#collection-name").html(collectionName);
+          $("#collection_description").html(collection_description);
+          $('.inner_photo').css('background', 'rgba(0, 0, 0, 0) url("' + headerBannerImageUrl + '") no-repeat scroll center / cover');
+        }
+
+        function clearSearchResults() {
+          $(".sample").html("");
+        }
+        function displayPhoto(photoId, photoUrl, headerImageUrl, photoname, photolocation, photodescription, photosource, photolink, phototags, photosummary, photorights, photolatitude, photolongitude, photomincreateddate, photomaxcreateddate, imagePageNumber) {
+
+          /*if (firstImageUrlCounter == 0) {
+           $('.inner_photo').css('background', 'rgba(0, 0, 0, 0) url("' + headerImageUrl + '") no-repeat scroll center / cover');
+           firstImageUrlCounter++;
+           }*/
+
+          var newItem = $('<li data-contenttype="inline" data-href="#inline-template' + photoId + '" style="background-image:url(' + photoUrl + ')" data-id="' + photoId + '"><div class="caption"><img src="images/right_icon.png" width="36" height="27" /></div></li>');
+
+
+          var photo_summary_html = '';
+          var photo_loc_html = '';
+          var photo_tag_html = '';
+          var photo_source_html = '';
+          var photo_source_link_html = '';
+          var photo_rights_html = '';
+          var photo_date_html = '';
+
+
+          if (photorights != '') {
+            photo_rights_html = '<h4><img class="slideshow-icon" src="images/icons/ic_rights.png" /> Rights advisory</h4> \
+                                         <p>' + photorights + '</p>';
+          }
+
+          if (photolink != '') {
+            photo_source_link_html = '<h4><img class="slideshow-icon" src="images/icons/ic_link.png" /> Link</h4> \
+                                                                        <p><a target="_blnak" href="' + photolink + '">' + photolink + '</a></p>';
+          }
+
+          if (photosource != '') {
+            photo_source_html = '<h4><img class="slideshow-icon" src="images/icons/ic_name.png" /> Source</h4> \
+                                                                        <p>' + photosource + '</p>';
+          }
+
+          if (phototags != '') {
+            photo_tag_html = '<h4><img class="slideshow-icon" src="images/icons/ic_keywords.png" /> Tags</h4> \
+                                                                  <p>' + phototags + '</p>';
+          }
+
+          if (photosummary != '') {
+            photo_summary_html = '<h4><img class="slideshow-icon" src="images/icons/ic_summary.png" /> Summary</h4> \
+                                                                  <p>' + photosummary + '</p>';
+          }
+
+          if (photolocation != null && photolatitude != null && photolongitude != null) {
+            photo_loc_html = '<h4><img class="slideshow-icon" src="images/icons/ic_location.png" /> Location</h4> \
+                                                                        <div class="row"> \
+                                                                                <div class="col-md-12"> \
+                                                                                        <p>' + photolocation + ' </p> \
+                                                                                </div> \
+                                                                                <div class="col-md-12"> \
+                                      <a target="_blank" href="https://www.google.com/maps/place/' + photolatitude + ',' + photolongitude + '/@' + photolatitude + ',' + photolongitude + '">\
+                                                                                        <img alt="" class="map-img" src="https://maps.googleapis.com/maps/api/staticmap?center=' + photolatitude + ',' + photolongitude + '&zoom=11&size=230x120&markers=color:red|' + photolatitude + ',' + photolongitude + '&key=AIzaSyDsv-XvXGXCLLgpe5Ctp758Ib4dCKbJo_g"/>\
+                                        </a>\
+                                                                                </div> \
+                                                                        </div>';
+          }
+
+		
+		    if ((photomincreateddate != '' && photomincreateddate != null) && (photomaxcreateddate != '' && photomaxcreateddate != null)) {
+
+                var d1 = new Date(photomincreateddate);
+                var year1 = d1.getFullYear();
+
+                var d2 = new Date(photomaxcreateddate);
+                var year2 = d2.getFullYear();
+
+                if (year1 != year2) {
+
+                  photo_date_html = '<h4><img src="images/icons/ic_date.png" class="slideshow-icon"> Date</h4> \
+              <p>' + year1 + ' - ' + year2 + '</p>';
+                } else {
+                  photo_date_html = '<h4><img src="images/icons/ic_date.png" class="slideshow-icon"> Date</h4> \
+              <p>' + year1 + '</p>';
+                }
+              } else if ((photomincreateddate == '' && photomincreateddate == null) && (photomaxcreateddate != '' && photomaxcreateddate != null)) {
+                var d2 = new Date(photomaxcreateddate);
+                var year2 = d2.getFullYear();
+
+                photo_date_html = '<h4><img src="images/icons/ic_date.png" class="slideshow-icon"> Date</h4> \
+              <p>' + year2 + '</p>';
+              } else if ((photomincreateddate != '' && photomincreateddate != null) && (photomaxcreateddate == '' && photomaxcreateddate == null)) {
+                var d1 = new Date(photomincreateddate);
+                var year1 = d1.getFullYear();
+
+                photo_date_html = '<h4><img src="images/icons/ic_date.png" class="slideshow-icon"> Date</h4> \
+              <p>' + year1 + '</p>';
+              }
+
+          var newItemDetail = '<div id="inline-template' + photoId + '" style="display: none"> \
+                                  <div class="ajax"> \
+                                        <div class="row"> \
+                                          <div class="col-md-7"> \
+										  <a data-page="' + imagePageNumber + '" data-call_url="'+ imagesUrl +'" data-id="' + photoId + '" data-url="' + headerImageUrl + '" data-image_url="' + photoUrl + '" class="play_slide"><div class="photo_link"><img src="images/full_icon.png" width="28" height="28" /></div></a>	\
+										  <a data-page="' + imagePageNumber + '" data-call_url="'+ imagesUrl +'" data-id="' + photoId + '" data-url="' + headerImageUrl + '" data-image_url="' + photoUrl + '" class="play_slide"><img src="' + headerImageUrl + '" class="img-responsive" style=" width:100%" /></a></div> \
+                                          <div class="col-md-5"> \
+                                                <div class="txt"> \
+                                                        <div class="row"> \
+                                                                <div class="col-md-12">\
+                                                                        <div class="photo_title">' + photoname + '</div> \
+                                                                </div> \
+                                                                <div class="col-md-12">\
+																		' + photo_summary_html + ' \
+																		' + photo_tag_html + ' \
+																		' + photo_date_html + ' \
+                                                                        ' + photo_loc_html + '\
+                                                                        ' + photo_source_html + ' \
+                                                                        ' + photo_source_link_html + ' \
+                                                                        ' + photo_rights_html + ' \
+                                                                </div> \
+                                                        </div> \
+                                                </div> \
+                                                </div> \
+                                          </div> \
+                                        </div> \
+                                  </div>';
+
+          resultElement.append(newItem);
+
+          $('.image_details_container').append(newItemDetail);
+
+          ////console.log(wall);
+
+
+          //$('.sample').append('<li data-contenttype="inline" data-href="#inline-template100"><img src="images/search_photo02.jpg" /></li>');
+          $('.sample').append(newItem);
+
+          wall.refresh();
+
+
+          // console.log('displayPhoto photoId = ', photoId, ', photoUrl = ', photoUrl);
+
+        }
+
+        /* Utilities */
+        function getUrlParameter(sParam) {
+          var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+                  sURLVariables = sPageURL.split('&'),
+                  sParameterName,
+                  i;
+
+          for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+          }
+        }
+
+        function initialize_date_range_slider(created_date_range_from, created_date_range_to)
+        {
+          $("#date_range_picker").ionRangeSlider({
+            type: "double",
+            min: created_date_range_from,
+            max: created_date_range_to,
+            grid: false,
+            grid_num: 10,
+            prettify_enabled: false,
+            onFinish: function (data) {
+
+            if (g_range_from != data.from || g_range_to != data.to) {
+						
+				if(created_date_range_from == data.from && created_date_range_to == data.to){
+					null_media_counter = 0;
+				}else{
+					null_media_counter = 1;
+				}
+				
+				  searchFrom = data.from;
+				  searchTo = data.to;
+				  clearSearchResults();
+				  loadRemotePhotos(1);
+
+              }
+
+              //clearSearchResults();
+              //searchPhotos(tags);
+              //console.log(data);
+            }
+          });
+        }
+
+		        /* Slideshow logic */
+        $("#play-button").click(function () {
+          //window.open('slideshow.html?url=' + encodeURIComponent(imagesUrl) + '&auto_play=1');
+		  
+          // Prepare url to retrieve photos for all
+         var collectionMainUrl = "https://api.getarchive.net/v3/collections/" + collectionId + "/media";
+
+		  collectionMainUrl += "?rpp=100&created_date_range=1" + periodFilter + "&page=1";
+		  
+		  items = [];
+		  
+		  swiperSliderCallURL(collectionMainUrl, 0, 1);
+        });
+
+		  var defaultRPP = 100; // default Results Per Page value
+		  var imagesTotal;
+		  var currImageNumber = 0;
+		  var imagesStack = [];
+
+		  // build items array
+		var items = [];
+		
+        $(document).on('click', '.play_slide', function () {
+		
+		$("#images-loading").addClass('loading-slider');
+		  
+		  items = [];
+		  
+		  sliderImagesUrl = $(this).data('call_url');
+		  var image_id = $(this).data('id');
+		  
+          //window.open('slideshow.html?image_id=' + image_id + '&page=' + page_id + '&url=' + encodeURIComponent(imagesUrl));
+
+		  //sliderImagesUrl = imagesUrl;
+		  
+		  imageID = image_id;
+	//	  pageID = page_id;		
+	
+		  swiperSliderCallURL(sliderImagesUrl, imageID, 0);
+		  
+        });
+
+		function swiperSliderCallURL(sliderImagesUrl, imageID, auto_play_var){
+			//console.log(imageID);
+		  $.ajax({
+			url: sliderImagesUrl,
+			headers: {
+			  "x-auth-key": "ladygaga#1"
+			}
+		  }).done(function (data) {
+
+			var i = 0;
+
+			imagesTotal = (defaultRPP > data.total_items) ? data.total_items : defaultRPP;
+			//console.log('imagesTotal = ', imagesTotal);
+			//console.log(data);
+			data.items.forEach(function (item, index) {
+
+			  if (imageID == item.id){
+				startSliderIndex = index;
+				//console.log(imageID);
+				//console.log(index);
+			  }
+
+			  var imageUrl = item.resources[item.resources.length - 1].url;
+			  var mainImageWidth = item.resources[item.resources.length - 1].width;
+			  var mainImageHeight = item.resources[item.resources.length - 1].height;
+
+			  var imageSource = item.source_name;
+
+			  var imageTags = item.tags;
+			  imageTags = imageTags.toString();
+			  var replacedTags = imageTags.split(',').join(', ');
+
+			  imageUrl = imageUrl;
+
+			  var imageCaption = '<h3>' + item.name + '</h3><p>' + imageSource + '</p>';
+			  
+			  items[i] = {
+				src: imageUrl,
+				w: mainImageWidth,
+				h: mainImageHeight,
+				title: imageCaption,
+			  };
+			  i++;
+			  
+			});
+
+
+			openPhotoSwipe(startSliderIndex);
+			//console.log(startSliderIndex);
+			$("#images-loading").removeClass('loading-slider');
+						
+			if (auto_play_var == 1) {
+			  $('.pswp__button--autoplay').trigger('click');
+			}
+			
+		  });
+
+		}
+	  /* Full Screen Swiper Code */
+
+	  var openPhotoSwipe = function (startSliderIndex) {
+		
+		var pswpElement = document.querySelectorAll('.pswp')[0];
+
+		//console.log(startSliderIndex);
+		
+		if (startSliderIndex > 0) {
+		  startSliderIndex = startSliderIndex;
+		} else {
+		  startSliderIndex = 0;
+		}
+
+		// define options (if needed)
+		var options = {
+		  // history & focus options are disabled on CodePen        
+		  index: startSliderIndex,
+		  history: false,
+		  focus: false,
+		  closeOnScroll: false,
+		  pinchToClose: false,
+		  modal: false,		  shareEl: false,		  
+		  showAnimationDuration: 0,
+		  hideAnimationDuration: 0
+
+		};
+
+		var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+		gallery.init();
+
+		gallery.listen('close', function () {
+		  window.close();
+		 //gallery.destroy();
+		});
+
+		/************************ [Auto play code start] ****************************/
+
+		if ($('.pswp__button--autoplay').length === 0)
+		  $('<button class="pswp__button pswp__button--autoplay" title="AutoPlay"></button>').insertAfter('.pswp__button--zoom');
+
+		var _autoplayId = null;
+
+		$('.pswp__button--autoplay').on('click', function (event) {
+
+		  event.preventDefault();
+
+		  if (_autoplayId) {
+
+			clearInterval(_autoplayId);
+			_autoplayId = null;
+			$('.pswp__button--autoplay').removeClass('stop');
+
+		  } else {
+			_autoplayId = setInterval(function () {
+			  gallery.next();
+			}, 7000);
+			$('.pswp__button--autoplay').addClass('stop');
+
+
+		  }
+		});
+
+		/************************ [Auto play code end] ****************************/
+
+	  };
+
+
+      });
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>
